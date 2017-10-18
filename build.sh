@@ -23,7 +23,15 @@ echo "please copy your zImage into ${TVS}/src folder"
 
       exit
   fi
-  
+
+if [ -d $TVS/firmware ]; then
+    chmod 777 $FW/*
+      rm -rf $FW/*
+      cp -R $TVS/firmware/* $FW/
+      rm -rf $TVS/firmware
+      
+      fi
+        
 if [ -d $TVS/kernel ]; then
     chmod 777 $TVS/*
       rm -rf $MODS/*
