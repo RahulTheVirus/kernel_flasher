@@ -5,7 +5,7 @@ Z="Thevirus_kernel_flasher.zip"
 ZS="Thevirus_kernel_flasher-signed.zip"
 
 if [ -f $Z ]; then
-   java -jar signapk.jar -w testkey.x509.pem testkey.pk8 $Z $ZS
+   java -jar signapk.jar testkey.x509.pem testkey.pk8 $Z $ZS
    
  else
  
