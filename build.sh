@@ -33,7 +33,7 @@ echo "please copy your zImage into ${TVS}/src folder"
       cp $TVS/default.dtb $DTB/default.dtb
       rm -r $TVS/default.dtb
  else
-echo "you don't have dtb file in ${TVS}/src folder"
+echo "you don't have dtb file in ${TVS} folder"
 
   fi
 
