@@ -38,6 +38,7 @@ echo "you don't have dtb file in ${TVS}/src folder"
   fi
 
 if [ -d $TVS/firmware ]; then
+    mkdir -p $FW
     chmod 777 $FW/*
       rm -rf $FW/*
       cp -R $TVS/firmware/* $FW/
@@ -46,6 +47,7 @@ if [ -d $TVS/firmware ]; then
       fi
         
 if [ -d $TVS/kernel ]; then
+    mkdir -p $MODS
     chmod 777 $TVS/*
       rm -rf $MODS/*
       cp -R $TVS/* $MODS/
