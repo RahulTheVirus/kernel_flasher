@@ -10,8 +10,8 @@ MZ="$R/mkzip"
 SG="$R/sign"
 MODS="$MZ/system/lib/modules"
 FW="$MZ/system/etc/firmware"
-KERNEL="$MZ/zimg"
-DTB=$MZ/DTB
+KERNEL="$MZ/scripts/zimg"
+DTB=$MZ/scripts/DTB
 
 if [ -f $TVS/zImage ]; then
     mkdir -p $KERNEL
