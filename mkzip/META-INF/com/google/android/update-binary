@@ -54,6 +54,7 @@ print ""
  unzip -o "$3"
 
  if [ -d $KERNEL ]; then
+   {
  print "- Setting binarry & permissons..."
  chmod 777 $KERNEL/busybox
  chmod 777 $KERNEL/bootimg
@@ -62,11 +63,7 @@ print ""
  chmod 777 $KERNEL/*.sh
  print ""
  print "- Done!.."
- else 
- print "- No file here! maybe your zip is corrupted..." 
-
- fi
- 
+  
  if [ -f $KERNEL/zimg/zImage ]; then
      print "- Flashing start..."
      print " "
@@ -82,10 +79,6 @@ print ""
      print "- Setting permissons !.."
      $KERNEL/permisson.sh
      print "- Done !.."   
- else
-     
- print "- zImage not exist ..."
- 
  fi
  
  print "- cleanup started ..."
@@ -99,3 +92,11 @@ print ""
 	print " or https://t.me/mipad1   Thanks!"
   sleep 3
   reboot
+  
+  }
+  
+ else  
+        print "- No file here! maybe your zip is corrupted..."   
+        print "- zImage not exist ..."
+     exit
+  fi
