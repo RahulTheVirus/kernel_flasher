@@ -87,7 +87,7 @@ print ""
 	print ""
 	print "All Done !.."
 	print ""
-	print "Rebooting in 5 seconds..."
+	print "Rebooting in 3 seconds..."
 	print " For issue please connect on Telegram @mipad1"
 	print " or https://t.me/mipad1   Thanks!"
   sleep 3
