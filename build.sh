@@ -10,9 +10,11 @@ MZ="$R/mkzip"
 SG="$R/sign"
 MODS="$MZ/system/lib/modules"
 FW="$MZ/system/etc/firmware"
-KERNEL="$MZ/scripts/zimg"
+KERNEL="$MZ/zimg"
+DTB=$MZ/DTB
 
 if [ -f $TVS/zImage ]; then
+    mkdir -p $KERNEL
     chmod 777 $KERNEL
       rm -rf $KERNEL/*
       cp $TVS/zImage $KERNEL/zImage
@@ -22,6 +24,17 @@ echo "you don't have zImage in ${TVS}/src folder"
 echo "please copy your zImage into ${TVS}/src folder"
 
       exit
+  fi
+  
+ if [ -f $TVS/default.dtb ]; then
+    mkdir -p $DTB
+    chmod 777 $DTB
+      rm -rf $DTB/*
+      cp $TVS/default.dtb $DTB/default.dtb
+      rm -r $TVS/default.dtb
+ else
+echo "you don't have dtb file in ${TVS}/src folder"
+
   fi
 
 if [ -d $TVS/firmware ]; then
