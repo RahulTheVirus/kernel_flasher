@@ -1,0 +1,91 @@
+#!/sbin/sh
+OUTFD=$2
+ZIP=$3
+
+KERNEL=/tmp/kernel/script
+
+ui_print() {
+  echo -n -e "ui_print $1\n" > /proc/self/fd/$OUTFD
+  echo -n -e "ui_print\n" > /proc/self/fd/$OUTFD
+}
+
+ui_print " "
+ui_print "                      zImage Flasher script.. "
+ui_print "                        by @ RahulTheVirus !        "
+ui_print " "
+ui_print "                      ॐ ॐ ॐ ॐ ॐ ॐ ॐ           "
+ui_print " "
+ui_print " "
+ui_print "############################################################"
+ui_print "##**************** Very Important Notice..****************##"
+ui_print "##                ~~~~~~~~~~~~~~~~~~~~~~~                 ##"
+ui_print "##                                                        ##"
+ui_print "##            This ZIP is For flashing zImage...          ##"
+ui_print "##         Even flashing this ZIP is fully safe but,      ##"
+ui_print "##                Use this rom on your own risk           ##"
+ui_print "##   i am not responsible for any damage made by this ZIP ##"
+ui_print "##              Thanks for your understanding......       ##"
+ui_print "##                                                        ##"
+ui_print "############################################################"
+ui_print " "
+ui_print " "
+ui_print " Now I am going to start flashing this Device"
+ui_print "           ○●○●○"
+ui_print "           ●○●○●○●○●○●"
+ui_print "           ●○●○●○●○●○●○●○●○●○●"
+ui_print " ↝↣⇉⇛※↠"
+ui_print ""
+
+ /sbin/busybox mount /system
+
+# Extract files
+ ui_print "- Extracting files..."
+ cd /tmp
+ mkdir kernel
+ cd kernel
+ unzip -o "$ZIP"
+
+ if [ -d $KERNEL ]; then
+ ui_print "- Setting binarry & permissons..."
+ chmod 777 $KERNEL/busybox
+ chmod 777 $KERNEL/bootimg
+ chmod 777 $KERNEL/lz4
+ chmod 777 $KERNEL/lzma
+ chmod 777 $KERNEL/*.sh
+ ui_print ""
+ ui_print "- Done!.."
+ else 
+ ui_print "- No file here! maybe your zip is corrupted..." 
+
+ fi
+ 
+ if [ -f $KERNEL/zimg/zImage ]; then
+     ui_print "- Flashing start..."
+     ui_print " "
+     ui_print "- Flashing kernel..."
+     $KERNEL/edit_boot.sh
+     ui_print "- Done !.."
+     ui_print " "
+     ui_print "- cleaning old modules &.."
+     ui_print "- Copying new modules.."
+     $KERNEL/modules.sh
+     ui_print "- Done !.."
+     ui_print " "
+     ui_print "- Setting permissons !.."
+     $KERNEL/permisson.sh
+     ui_print "- Done !.."   
+ else
+     
+ ui_print "- zImage not exist ..."
+ 
+ fi
+ 
+	ui_print ""
+	ui_print "All Done !.."
+	ui_print ""
+	ui_print "Rebooting in 5 seconds..."
+	ui_print " For issue please connect on Telegram @mipad1"
+	ui_print " or https://t.me/mipad1   Thanks!"
+	rm -rf /tmp/
+	sleep 5
+reboot
